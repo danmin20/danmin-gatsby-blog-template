@@ -1,6 +1,7 @@
 export type SiteMetadata = {
   title: string;
   author: Author;
+  featured: { title: string; category: string }[];
   siteUrl: string;
   social: Social;
   language: string;
@@ -9,26 +10,17 @@ export type SiteMetadata = {
       repo: string;
     };
   };
-  about: {
-    careers: Career[];
-    activities: Activity[];
-  };
+  timestamps: Timestamp[];
   playground: {
     projects: Project[];
   };
 };
 
-export type Career = {
+export type Timestamp = {
+  category: string;
   date: string;
-  kr: string;
   en: string;
-  info: string;
-};
-
-export type Activity = {
-  date: string;
   kr: string;
-  en: string;
   info: string;
   link: string;
 };
@@ -53,7 +45,7 @@ export type Author = {
   stack: string[];
   bio: Bio;
   social: Social;
-  legacyBlog: LegacyBlog;
+  dropdown: Record<string, string>;
 };
 
 export type Bio = {
@@ -66,11 +58,6 @@ export type Social = {
   github: string;
   linkedIn: string;
   resume: string;
-};
-
-export type LegacyBlog = {
-  tistory: string;
-  velog: string;
 };
 
 export type Post = {

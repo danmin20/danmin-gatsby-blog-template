@@ -137,7 +137,7 @@ export const List = styled.div`
     color: #1b64da;
   }
 
-  & > div:first-child {
+  & > div:first-of-type {
     font-weight: bold;
   }
 `;
@@ -153,7 +153,7 @@ export const Qr = styled.div`
     gap: 10px;
     align-items: center;
 
-    & > img:first-child {
+    & > img:first-of-type {
       width: 30px;
     }
     & > img:last-child {

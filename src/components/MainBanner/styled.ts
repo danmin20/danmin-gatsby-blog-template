@@ -118,7 +118,7 @@ export const SocialButton = styled.a`
   ${({ theme }) => hoverUnderline(theme)};
 `;
 
-export const LegacyBlogButton = styled.div`
+export const DropdownButton = styled.div`
   color: ${({ theme }) => theme.color.black100};
   font-size: 18px;
   position: absolute;

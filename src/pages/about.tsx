@@ -2,12 +2,11 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Bio from '../components/Bio';
-import Information from '../components/Information';
 import MainBanner from '../components/MainBanner';
 import Seo from '../components/Seo';
 import Timestamps from '../components/Timestamps';
 import Layout from '../layout';
-import { SiteMetadata } from '../type';
+import { SiteMetadata, Timestamp } from '../type';
 
 type AboutProps = {
   data: {
@@ -18,8 +17,16 @@ type AboutProps = {
 
 const About: React.FC<AboutProps> = ({ location, data }) => {
   const metaData = data.site.siteMetadata;
-  const { author, about } = metaData;
-  const { careers, activities } = about;
+  const { author, timestamps } = metaData;
+
+  const stamps = timestamps.reduce((acc, cur) => {
+    return {
+      ...acc,
+      [cur.category]: [...(acc[cur.category] || []), cur],
+    };
+  }, {} as Record<string, Timestamp[]>);
+
+  console.log('stamps', stamps);
 
   return (
     <Layout location={location}>
@@ -27,10 +34,9 @@ const About: React.FC<AboutProps> = ({ location, data }) => {
       <MainBanner author={author} />
       <Bio bio={author.bio} />
 
-      <Information />
-
-      <Timestamps title='Careers' timestamps={careers} />
-      <Timestamps title='Activities' timestamps={activities} />
+      {Object.keys(stamps).map((key) => (
+        <Timestamps key={key} title={key} timestamps={stamps[key]} />
+      ))}
     </Layout>
   );
 };
@@ -56,27 +62,18 @@ export const pageQuery = graphql`
             linkedIn
             resume
           }
-          legacyBlog {
+          dropdown {
             velog
             tistory
           }
         }
-
-        about {
-          careers {
-            date
-            kr
-            en
-            info
-          }
-
-          activities {
-            date
-            kr
-            en
-            info
-            link
-          }
+        timestamps {
+          category
+          date
+          en
+          kr
+          info
+          link
         }
       }
     }

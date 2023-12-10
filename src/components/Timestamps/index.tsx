@@ -1,19 +1,17 @@
 import { Link2Icon } from '@radix-ui/react-icons';
 import React from 'react';
 
-import { Activity, Career } from '@/src/type';
+import { Timestamp } from '@/src/type';
 
 import AboutTitle from '../AboutTitle';
 import * as S from './styled';
 
 type TimestampsProps = {
   title: string;
-  timestamps: (Career | Activity)[];
+  timestamps: Timestamp[];
 };
 
 const Timestamps: React.FC<TimestampsProps> = ({ title, timestamps }) => {
-  if (!timestamps || timestamps.length < 2) return null;
-
   return (
     <S.Wrapper>
       <AboutTitle title={title} />
