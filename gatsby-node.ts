@@ -40,7 +40,7 @@ const createPosts = ({ createPage, edges }: CreatePagesFuncProps) => {
 
   edgesWithMap.forEach((edge) => {
     const postCategories = Object.keys(edge.categoriesMap);
-    postCategories.forEach((category) => category !== 'featured' && categorySet.add(category));
+    postCategories.forEach((category) => !category.includes('ignore') && categorySet.add(category));
   });
 
   const categories = [...categorySet];
@@ -127,8 +127,18 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     return;
   }
 
-  createPosts({ createPage, edges: result.data.allMarkdownRemark.edges });
-  createPost({ createPage, edges: result.data.allMarkdownRemark.edges });
+  const filteredEdges = result.data.allMarkdownRemark.edges.map((edge) => {
+    const { categories } = edge.node.frontmatter;
+    const categoriesArr = categories.split(' ');
+    const categoriesIgnoreRemoved = categoriesArr.filter((category) => !category.includes('ignore'));
+    return {
+      ...edge,
+      node: { ...edge.node, frontmatter: { ...edge.node.frontmatter, categories: categoriesIgnoreRemoved.join(' ') } },
+    };
+  });
+
+  createPosts({ createPage, edges: filteredEdges });
+  createPost({ createPage, edges: filteredEdges });
 };
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions, getNode }) => {

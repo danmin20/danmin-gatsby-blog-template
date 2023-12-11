@@ -10,11 +10,16 @@ export default class PostClass {
   author;
   date;
   categories;
+  filteredCategories;
 
   constructor(node: MarkdownRemark) {
     const { id, html, excerpt, frontmatter, fields } = node;
     const { slug } = fields;
     const { emoji, categories, title, author, date } = frontmatter;
+
+    const categoryArr = categories.split(' ');
+
+    const categoriesRemovedFeatured = categoryArr.filter((category) => !category.includes('ignore'));
 
     this.id = id;
     this.excerpt = excerpt;
@@ -24,6 +29,7 @@ export default class PostClass {
     this.title = title;
     this.author = author;
     this.date = date;
-    this.categories = categories.split(' ');
+    this.categories = categoryArr;
+    this.filteredCategories = categoriesRemovedFeatured;
   }
 }

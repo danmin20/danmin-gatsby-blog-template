@@ -41,6 +41,10 @@ export default {
       title: 'Featured2',
       category: 'featured2',
     },
+    {
+      title: 'Ignored Category',
+      category: 'category-ignore', // Keywords with 'ignore' are not categorized
+    },
   ],
 
   /**
