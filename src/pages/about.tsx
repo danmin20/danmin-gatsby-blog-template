@@ -26,8 +26,6 @@ const About: React.FC<AboutProps> = ({ location, data }) => {
     };
   }, {} as Record<string, Timestamp[]>);
 
-  console.log('stamps', stamps);
-
   return (
     <Layout location={location}>
       <Seo title='개발자 단민 | About' />

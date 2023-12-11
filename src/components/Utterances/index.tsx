@@ -41,8 +41,6 @@ const Utterances: React.FC<UtterancesProps> = ({ repo, path }) => {
     } else {
       isUtterancesLoaded.current = true;
     }
-
-    console.log('utterances', utterances);
   }, [rootElm, path, theme.isDark]);
 
   return <S.Wrapper className='utterances' ref={rootElm} />;
