@@ -22,10 +22,19 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-svgr`,
+    // Google Adsense
     {
       resolve: `gatsby-plugin-google-adsense`,
       options: {
-        publisherId: `ca-pub-8074104653609685`,
+        publisherId: `ca-pub-XXXXXXXXXXXX`,
+      },
+    },
+    // Google Analytics
+    {
+      resolve: `gatsby-plugin-gtag`,
+      options: {
+        trackingId: `G-XXXXXXXX`,
+        head: true,
       },
     },
     {
@@ -100,13 +109,7 @@ const config: GatsbyConfig = {
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
-    {
-      resolve: `gatsby-plugin-gtag`,
-      options: {
-        trackingId: `G-W7X8818JTT`,
-        head: true,
-      },
-    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
