@@ -17,9 +17,7 @@ type PlaygroundProps = {
 
 const Playground: React.FC<PlaygroundProps> = ({ location, data }) => {
   const metaData = data.site.siteMetadata;
-  const {
-    playground: { projects },
-  } = metaData;
+  const { projects } = metaData;
 
   return (
     <Layout location={location}>
@@ -40,19 +38,17 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        playground {
-          projects {
-            title
-            description
-            techStack
-            thumbnailUrl
-            links {
-              post
-              github
-              demo
-              googlePlay
-              appStore
-            }
+        projects {
+          title
+          description
+          techStack
+          thumbnailUrl
+          links {
+            post
+            github
+            demo
+            googlePlay
+            appStore
           }
         }
       }

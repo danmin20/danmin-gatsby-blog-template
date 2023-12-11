@@ -11,9 +11,7 @@ export type SiteMetadata = {
     };
   };
   timestamps: Timestamp[];
-  playground: {
-    projects: Project[];
-  };
+  projects: Project[];
 };
 
 export type Timestamp = {

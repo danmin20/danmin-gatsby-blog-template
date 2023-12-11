@@ -1,14 +1,25 @@
 export default {
+  /**
+   * basic Information
+   */
   title: `jeong-min.com`,
   description: `개발자 단민`,
   language: `ko`,
   siteUrl: `https://jeong-min.com/`,
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
+
+  /**
+   * comments setting
+   */
   comments: {
     utterances: {
       repo: ``, //`danmin20/danmin-gatsby-blog`,
     },
   },
+
+  /**
+   * introduce yourself
+   */
   author: {
     name: `이정민`,
     nickname: `단민`,
@@ -80,21 +91,19 @@ export default {
   /**
    * metadata for Playground Page
    */
-  playground: {
-    projects: [
-      {
-        title: 'Portfolio',
-        description: '포트폴리오',
-        techStack: ['React', 'Next.js', 'Typescript'],
-        thumbnailUrl: '', // Path to your in the 'assets' folder
-        links: {
-          post: '',
-          github: '',
-          demo: '',
-          googlePlay: '',
-          appStore: '',
-        },
+  projects: [
+    {
+      title: 'Portfolio',
+      description: '포트폴리오',
+      techStack: ['React', 'Next.js', 'Typescript'],
+      thumbnailUrl: '', // Path to your in the 'assets' folder
+      links: {
+        post: '',
+        github: '',
+        demo: '',
+        googlePlay: '',
+        appStore: '',
       },
-    ],
-  },
+    },
+  ],
 };
