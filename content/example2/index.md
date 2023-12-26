@@ -2,12 +2,12 @@
 emoji: 👩🏻‍💻
 title: 'example2'
 date: '2020-10-30'
-categories: category-ignore featured2
+categories: featured-category2 category3
 ---
 
 ## 예시 글입니다.
 
-'ignore'이 포함된 카테고리는 featured 용으로 사용될 뿐, 카테고리로 노출되지 않습니다.
+featured-category2로써 홈에 노출되며, category2와 category3으로 카테고리가 분류됩니다.
 
 ```toc
 ```

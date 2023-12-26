@@ -45,16 +45,12 @@ export default {
    */
   featured: [
     {
-      title: 'Featured1',
-      category: 'featured1',
+      title: 'category1',
+      category: 'featured-category1',
     },
     {
-      title: 'Featured2',
-      category: 'featured2',
-    },
-    {
-      title: 'Ignored Category',
-      category: 'category-ignore', // Keywords with 'ignore' are not categorized
+      title: 'category2',
+      category: 'featured-category2',
     },
   ],
 

@@ -136,24 +136,20 @@ author: {
 ```ts
 featured: [
   {
-    title: 'Featured1',
-    category: 'featured1',
+    title: 'example1',
+    category: 'featured-example1',
   },
   {
-    title: 'Featured2',
-    category: 'featured2',
+    title: 'example2',
+    category: 'featured-example2',
   },
-  {
-    title: 'Ignored Category',
-    category: 'category-ignore', // Keywords with 'ignore' are not categorized
-  },
-]
+],
 ```
 
 위의 category에 들어가는 키워드는 마크다운 파일로 글을 작성할 때 넣은 category와 동일합니다.
 
-> 글의 카테고리를 작성할 때, `ignore` 키워드를 포함할 경우 글 목차 페이지와 글 상세 페이지에서 해당 카테고리는 노출되지 않습니다.  
-> (단순 메인 화면 노출을 위해서만 사용됩니다.)
+> 글의 카테고리를 작성할 때, `featured-` 를 포함할 경우, 지정한 title로 홈에 노출됩니다.  
+> `featured-example1`으로 작성할 경우, 카테고리는 `example1`으로 분류됩니다.
 
 &nbsp;
 

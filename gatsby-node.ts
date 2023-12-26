@@ -25,7 +25,7 @@ type CreatePagesFuncProps = {
 
 const createPosts = ({ createPage, edges }: CreatePagesFuncProps) => {
   const posts = path.resolve(`./src/templates/posts-template/index.tsx`);
-  const categorySet = new Set(['All']);
+  const categorySet: Set<string> = new Set();
 
   const edgesWithMap = edges.map((edge) => {
     const { categories } = edge.node.frontmatter;
@@ -40,10 +40,13 @@ const createPosts = ({ createPage, edges }: CreatePagesFuncProps) => {
 
   edgesWithMap.forEach((edge) => {
     const postCategories = Object.keys(edge.categoriesMap);
-    postCategories.forEach((category) => !category.includes('ignore') && categorySet.add(category));
+    postCategories.forEach((category) => {
+      const categoryName = category.replace('featured-', '').trim();
+      categorySet.add(categoryName);
+    });
   });
 
-  const categories = [...categorySet];
+  const categories = ['All', ...[...categorySet].sort((a, b) => a.localeCompare(b))];
 
   createPage({
     path: `/posts`,
@@ -130,10 +133,23 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const filteredEdges = result.data.allMarkdownRemark.edges.map((edge) => {
     const { categories } = edge.node.frontmatter;
     const categoriesArr = categories.split(' ');
-    const categoriesIgnoreRemoved = categoriesArr.filter((category) => !category.includes('ignore'));
+
+    const categorySet: Set<string> = new Set();
+
+    categoriesArr.forEach((category) => {
+      const categoryName = category.replace('featured-', '').trim();
+      categorySet.add(categoryName);
+    });
+
     return {
       ...edge,
-      node: { ...edge.node, frontmatter: { ...edge.node.frontmatter, categories: categoriesIgnoreRemoved.join(' ') } },
+      node: {
+        ...edge.node,
+        frontmatter: {
+          ...edge.node.frontmatter,
+          categories: [...categorySet].sort((a, b) => a.localeCompare(b)).join(' '),
+        },
+      },
     };
   });
 
