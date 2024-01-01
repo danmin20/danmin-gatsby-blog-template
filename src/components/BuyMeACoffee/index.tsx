@@ -1,14 +1,37 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import kakaoIcon from '@/assets/kakao_icon.svg';
-import kakaoQr from '@/assets/kakao_qr.svg';
 import tossIcon from '@/assets/toss_icon.svg';
-import tossQr from '@/assets/toss_qr.svg';
 
+import Image from '../Image';
 import * as S from './styled';
 
 const BuyMeACoffee: React.FC = () => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            remittances {
+              toss {
+                link
+                qrCode
+              }
+              kakaopay {
+                qrCode
+              }
+            }
+          }
+        }
+      }
+    `,
+  );
+
+  const remittance = site.siteMetadata.remittances;
+  const { toss, kakaopay } = remittance;
+
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [html, setHtml] = useState<HTMLHtmlElement | null>(null);
 
@@ -42,21 +65,27 @@ const BuyMeACoffee: React.FC = () => {
             <S.Modal>
               <S.Title>Buy Me A Coffee ☕️</S.Title>
               <S.Content>
+                {toss.link && (
+                  <S.List>
+                    <div>토스 익명송금</div>
+                    <a href={toss.link}>toss.me/danmin</a>
+                  </S.List>
+                )}
                 <S.List>
-                  <div>⓵ 토스 익명송금</div>
-                  <a href='https://toss.me/danmin'>toss.me/danmin</a>
-                </S.List>
-                <S.List>
-                  <div>② 송금 QR</div>
+                  <div>송금 QR</div>
                   <S.Qr style={{ width: 30 }}>
-                    <div>
-                      <img src={kakaoIcon} />
-                      <img src={kakaoQr} />
-                    </div>
-                    <div>
-                      <img src={tossIcon} />
-                      <img src={tossQr} />
-                    </div>
+                    {kakaopay.qrCode && (
+                      <div>
+                        <img src={kakaoIcon} />
+                        <Image alt='kakaopay' src={kakaopay.qrCode} />
+                      </div>
+                    )}
+                    {toss.qrCode && (
+                      <div>
+                        <img src={tossIcon} />
+                        <Image alt='toss' src={toss.qrCode} />
+                      </div>
+                    )}
                   </S.Qr>
                 </S.List>
               </S.Content>
