@@ -8,7 +8,8 @@
   </a>
 </p>
 
-**Demo Websites**: [**jeong-min.com**](https://www.jeong-min.com/)
+**Demo Website**: [**jeong-min.com**](https://www.jeong-min.com/)  
+**Open source Code**: [**Github**](https://github.com/danmin20/danmin-gatsby-blog-template)
 
 &nbsp;
 
