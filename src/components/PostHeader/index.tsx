@@ -13,7 +13,7 @@ const PostHeader: React.FC<PostHeaderProps> = ({ post }) => {
     <S.Header>
       {post.emoji && <S.Emoji>{post.emoji}</S.Emoji>}
       <S.Categories>
-        {post.categories.map((category) => (
+        {post.filteredCategories.map((category) => (
           <S.Category key={category} to={`/posts/${category}`}>
             {category}
           </S.Category>
@@ -25,4 +25,5 @@ const PostHeader: React.FC<PostHeaderProps> = ({ post }) => {
     </S.Header>
   );
 };
+
 export default PostHeader;

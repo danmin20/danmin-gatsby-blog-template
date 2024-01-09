@@ -10,6 +10,7 @@ export default class PostClass {
   author;
   date;
   categories;
+  filteredCategories;
 
   constructor(node: MarkdownRemark) {
     const { id, html, excerpt, frontmatter, fields } = node;
@@ -27,5 +28,8 @@ export default class PostClass {
     this.author = author;
     this.date = date;
     this.categories = categoryArr;
+    this.filteredCategories = categoryArr.map((category) => {
+      return category.replace('featured-', '').trim();
+    });
   }
 }
