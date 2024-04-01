@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
   right: 0;
   bottom: 0;
   padding-bottom: 61px;
+
+  @media ${MOBILE_MEDIA_QUERY} {
+    padding-bottom: 0;
+  }
 `;
 
 export const ContentWrapper = styled.div`
