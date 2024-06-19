@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ title, location }) => {
           </div>
         </div>
         <S.Menu>
-          <S.MenuLink to='/posts' isselected={(pathname === '/posts').toString()}>
+          <S.MenuLink to='/posts' isselected={pathname.includes('/posts').toString()}>
             posts
           </S.MenuLink>
           <S.MenuLink to='/about' isselected={(pathname === '/about').toString()}>
