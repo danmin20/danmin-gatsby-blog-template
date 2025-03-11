@@ -221,7 +221,6 @@ remittance 정보는 Buy me a coffee 컴포넌트에 사용됩니다.
 ```js
 remittances: {
   toss: {
-    link: 'https://toss.me/danmin',
     qrCode: 'toss_qr.svg', // Path to your in the 'assets' folder
   },
   kakaopay: {

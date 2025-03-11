@@ -16,7 +16,6 @@ const BuyMeACoffee: React.FC = () => {
           siteMetadata {
             remittances {
               toss {
-                link
                 qrCode
               }
               kakaopay {
@@ -65,14 +64,7 @@ const BuyMeACoffee: React.FC = () => {
             <S.Modal>
               <S.Title>Buy Me A Coffee ☕️</S.Title>
               <S.Content>
-                {toss.link && (
-                  <S.List>
-                    <div>토스 익명송금</div>
-                    <a href={toss.link}>toss.me/danmin</a>
-                  </S.List>
-                )}
                 <S.List>
-                  <div>송금 QR</div>
                   <S.Qr style={{ width: 30 }}>
                     {kakaopay.qrCode && (
                       <div>
