@@ -9,24 +9,22 @@ import Image from '../Image';
 import * as S from './styled';
 
 const BuyMeACoffee: React.FC = () => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            remittances {
-              toss {
-                qrCode
-              }
-              kakaopay {
-                qrCode
-              }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          remittances {
+            toss {
+              qrCode
+            }
+            kakaopay {
+              qrCode
             }
           }
         }
       }
-    `,
-  );
+    }
+  `);
 
   const remittance = site.siteMetadata.remittances;
   const { toss, kakaopay } = remittance;

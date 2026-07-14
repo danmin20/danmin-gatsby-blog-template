@@ -19,12 +19,15 @@ const About: React.FC<AboutProps> = ({ location, data }) => {
   const metaData = data.site.siteMetadata;
   const { author, timestamps } = metaData;
 
-  const stamps = timestamps.reduce((acc, cur) => {
-    return {
-      ...acc,
-      [cur.category]: [...(acc[cur.category] || []), cur],
-    };
-  }, {} as Record<string, Timestamp[]>);
+  const stamps = timestamps.reduce(
+    (acc, cur) => {
+      return {
+        ...acc,
+        [cur.category]: [...(acc[cur.category] || []), cur],
+      };
+    },
+    {} as Record<string, Timestamp[]>,
+  );
 
   return (
     <Layout location={location}>

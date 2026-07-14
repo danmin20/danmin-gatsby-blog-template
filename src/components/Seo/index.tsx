@@ -1,5 +1,4 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import PropTypes from 'prop-types';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -10,23 +9,21 @@ type SeoProps = {
 };
 
 const Seo: React.FC<SeoProps> = ({ description, title }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author {
-              name
-              nickname
-            }
-            ogImage
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          author {
+            name
+            nickname
           }
+          ogImage
         }
       }
-    `,
-  );
+    }
+  `);
 
   const metaDescription = description || site.siteMetadata.description;
 
@@ -72,15 +69,6 @@ const Seo: React.FC<SeoProps> = ({ description, title }) => {
       ]}
     />
   );
-};
-
-Seo.defaultProps = {
-  description: ``,
-};
-
-Seo.propTypes = {
-  description: PropTypes.string as React.Validator<string>,
-  title: PropTypes.string.isRequired,
 };
 
 export default Seo;
