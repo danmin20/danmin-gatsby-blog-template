@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules/', 'public/', '.cache/', '.claude/', 'static/'],
+    ignores: ['node_modules/', 'public/', '.cache/', '.claude/', 'static/', 'content/', 'assets/'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

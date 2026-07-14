@@ -25,7 +25,6 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Seo title={`개발자 단민 | ${curPost?.title}`} description={curPost?.excerpt} />
       <PostHeader post={curPost} />
       <S.PostContent>
         <div className='markdown' dangerouslySetInnerHTML={{ __html: curPost.html }} />
@@ -41,6 +40,10 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ location, data }) => {
 };
 
 export default PostTemplate;
+
+export const Head = ({ data }: { data: PostTemplateProps['data'] }) => (
+  <Seo title={`개발자 단민 | ${data.cur.frontmatter.title}`} description={data.cur.excerpt} />
+);
 
 export const pageQuery = graphql`
   query ($slug: String, $nextSlug: String, $prevSlug: String) {

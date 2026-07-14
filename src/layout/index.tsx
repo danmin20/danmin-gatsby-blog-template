@@ -1,5 +1,3 @@
-import './style.scss';
-
 import { ThemeProvider } from '@emotion/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { ThemeManagerContext } from 'gatsby-emotion-dark-mode';

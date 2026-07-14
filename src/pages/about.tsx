@@ -31,7 +31,6 @@ const About: React.FC<AboutProps> = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Seo title='개발자 단민 | About' />
       <MainBanner author={author} />
       <Bio bio={author.bio} />
 
@@ -43,6 +42,8 @@ const About: React.FC<AboutProps> = ({ location, data }) => {
 };
 
 export default About;
+
+export const Head = () => <Seo title='개발자 단민 | About' />;
 
 export const pageQuery = graphql`
   query {

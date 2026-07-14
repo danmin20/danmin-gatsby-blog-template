@@ -19,7 +19,6 @@ const Guestbook: React.FC<GuestbookProps> = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Seo title='개발자 단민 | Guestbook' />
       <GuestbookBanner />
       <Utterances repo={utterancesRepo} path='guestbook' />
     </Layout>
@@ -27,6 +26,8 @@ const Guestbook: React.FC<GuestbookProps> = ({ location, data }) => {
 };
 
 export default Guestbook;
+
+export const Head = () => <Seo title='개발자 단민 | Guestbook' />;
 
 export const pageQuery = graphql`
   query {

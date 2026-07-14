@@ -3,7 +3,7 @@ import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { useMemo } from 'react';
 
 type ImageNode = {
-  childImageSharp: {
+  childImageSharp?: {
     gatsbyImageData: IGatsbyImageData;
   };
   publicURL: string;
@@ -14,7 +14,7 @@ type ImageNode = {
 const Image = ({ src, ...rest }: React.ImgHTMLAttributes<HTMLImageElement>) => {
   const data = useStaticQuery(graphql`
     query {
-      images: allFile(filter: { sourceInstanceName: { eq: "assets" } }) {
+      images: allFile(filter: { sourceInstanceName: { eq: "assets" }, extension: { ne: "svg" } }) {
         edges {
           node {
             relativePath
@@ -26,21 +26,30 @@ const Image = ({ src, ...rest }: React.ImgHTMLAttributes<HTMLImageElement>) => {
           }
         }
       }
+      svgs: allFile(filter: { sourceInstanceName: { eq: "assets" }, extension: { eq: "svg" } }) {
+        edges {
+          node {
+            relativePath
+            extension
+            publicURL
+          }
+        }
+      }
     }
   `);
 
   const match = useMemo(
-    () => data.images.edges.find(({ node }: { node: ImageNode }) => src === node.relativePath),
+    () => [...data.images.edges, ...data.svgs.edges].find(({ node }: { node: ImageNode }) => src === node.relativePath),
     [data, src],
   );
 
   if (!match) return null;
 
   const {
-    node: { childImageSharp, publicURL, extension },
+    node: { childImageSharp, publicURL },
   }: { node: ImageNode } = match;
 
-  if (extension === 'svg' || !childImageSharp) {
+  if (!childImageSharp) {
     return <img src={publicURL} alt={publicURL} {...rest} />;
   }
 

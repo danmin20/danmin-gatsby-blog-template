@@ -21,7 +21,6 @@ const Playground: React.FC<PlaygroundProps> = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Seo title='개발자 단민 | Playground' />
       <Title>Enjoying making fun things</Title>
       <ProjectCardsWrapper>
         {projects.map((project, index) => (
@@ -33,6 +32,8 @@ const Playground: React.FC<PlaygroundProps> = ({ location, data }) => {
 };
 
 export default Playground;
+
+export const Head = () => <Seo title='개발자 단민 | Playground' />;
 
 export const pageQuery = graphql`
   query {
