@@ -18,6 +18,13 @@ export default {
   },
 
   /**
+   * google adsense
+   */
+  adsense: {
+    publisherId: `ca-pub-XXXXXXXXXXXX`,
+  },
+
+  /**
    * introduce yourself
    */
   author: {

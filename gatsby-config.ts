@@ -27,13 +27,6 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-svgr`,
-    // Google Adsense
-    {
-      resolve: `gatsby-plugin-google-adsense`,
-      options: {
-        publisherId: `ca-pub-XXXXXXXXXXXX`,
-      },
-    },
     // Google Analytics
     {
       resolve: `gatsby-plugin-gtag`,
