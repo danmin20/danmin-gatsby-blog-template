@@ -22,6 +22,7 @@ export default {
    */
   adsense: {
     publisherId: `ca-pub-XXXXXXXXXXXX`,
+    inArticleSlot: `XXXXXXXXXX`, // 인아티클 광고 단위의 slot ID
   },
 
   /**

@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import AdsenseInArticle from '@/src/components/AdsenseInArticle';
 import BuyMeACoffee from '@/src/components/BuyMeACoffee';
 import PostHeader from '@/src/components/PostHeader';
 import PostNavigator from '@/src/components/PostNavigator';
@@ -26,9 +27,11 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ location, data }) => {
   return (
     <Layout location={location}>
       <PostHeader post={curPost} />
+      <AdsenseInArticle />
       <S.PostContent>
         <div className='markdown' dangerouslySetInnerHTML={{ __html: curPost.html }} />
       </S.PostContent>
+      <AdsenseInArticle />
       <S.BuyMeACoffeeWrapper>
         <div>👇 도움이 되셨다면 👇</div>
         <BuyMeACoffee />
