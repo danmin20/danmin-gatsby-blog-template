@@ -294,7 +294,7 @@ $content-image-max-height: 560px;
   text-shadow: none;
 }
 
-.markdown :not(pre) > code.language-text {
+.markdown :not(pre)>code.language-text {
   background: rgba(135, 131, 120, 0.15);
   color: #eb5757;
   overflow-wrap: break-word;
@@ -312,7 +312,7 @@ $content-image-max-height: 560px;
   appearance: none;
 }
 
-.markdown :checked + .radio-label {
+.markdown :checked+.radio-label {
   position: relative;
   z-index: 1;
   border-color: #0366d6;
@@ -635,11 +635,11 @@ $content-image-max-height: 560px;
   clear: both;
 }
 
-.markdown > :first-of-type {
+.markdown> :first-of-type {
   margin-top: 0 !important;
 }
 
-.markdown > :last-child {
+.markdown> :last-child {
   margin-bottom: 0 !important;
 }
 
@@ -674,11 +674,11 @@ $content-image-max-height: 560px;
   border-left: 2px solid var(--markdown-blockquote-border-color);
 }
 
-.markdown blockquote > :first-of-type {
+.markdown blockquote> :first-of-type {
   margin-top: 0;
 }
 
-.markdown blockquote > :last-child {
+.markdown blockquote> :last-child {
   margin-bottom: 0;
 }
 
@@ -751,11 +751,11 @@ $content-image-max-height: 560px;
   line-height: 200%;
 }
 
-.markdown li > p {
+.markdown li>p {
   margin-top: 16px;
 }
 
-.markdown li + li {
+.markdown li+li {
   margin-top: 0.25em;
 }
 
@@ -828,7 +828,7 @@ $content-image-max-height: 560px;
   word-wrap: normal;
 }
 
-.markdown pre > code {
+.markdown pre>code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -1006,7 +1006,7 @@ $content-image-max-height: 560px;
   list-style-type: none;
 }
 
-.markdown .task-list-item + .task-list-item {
+.markdown .task-list-item+.task-list-item {
   margin-top: 3px;
 }
 
@@ -1017,10 +1017,6 @@ $content-image-max-height: 560px;
 
 // added for toc
 .markdown .table-of-contents {
-  @media (max-width: 1400px) {
-    display: none;
-  }
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1048,6 +1044,10 @@ $content-image-max-height: 560px;
       margin: 0;
     }
   }
+
+  @media (max-width: 1400px) {
+    display: none;
+  }
 }
 
 // added for image resizing
@@ -1067,7 +1067,7 @@ $content-image-max-height: 560px;
 }
 
 // caption
-.markdown .gatsby-resp-image-wrapper + em {
+.markdown .gatsby-resp-image-wrapper+em {
   display: block;
   text-align: center;
   font-style: italic;
