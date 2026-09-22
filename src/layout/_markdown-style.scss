@@ -287,14 +287,11 @@ $content-image-max-height: 560px;
   font-size: 12px;
 }
 
-.markdown code.language-text {
+.markdown :not(pre)>code.language-text {
   border-radius: 3px;
   font-size: 85%;
   padding: 0.2em 0.4em;
   text-shadow: none;
-}
-
-.markdown :not(pre)>code.language-text {
   background: rgba(135, 131, 120, 0.15);
   color: #eb5757;
   overflow-wrap: break-word;
